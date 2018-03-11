@@ -1,0 +1,46 @@
+{
+  "parser": "babel-eslint",
+  "extends": [
+    "eslint:recommended",
+    "airbnb-base"
+  ],
+  "plugins": [
+    "standard"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "env": {
+    "browser": true
+  },
+  "rules": {
+    "import/no-unresolved": [2],
+    "no-console": "off",
+    "no-plusplus": "off", // we want to use ++ and --, specially in for loops
+    "comma-dangle": "off", // prevent this causes a lot of useless work and git diffs
+    "no-param-reassign": ["error", { "props": false }], // we want to allow assigning to argument keys (reduce's accumulators)
+    "max-len": ["error", 120, 2, {
+      "ignoreUrls": true,
+      "ignoreComments": false,
+      "ignoreRegExpLiterals": true,
+      "ignoreStrings": true,
+      "ignoreTemplateLiterals": true
+    }], // 120 is the Jetbrains default
+    "no-use-before-define": ["error", {
+      "functions": false,
+      "classes": true,
+      "variables": true
+    }], // We want to call functions before their definition, function declarations are hoisted, so it's safe
+    "wrap-iife": ["error", "inside"], // We want to wrap iife and execute outside of the parenthesis
+    "standard/object-curly-even-spacing": ["error", "either"],
+    "standard/array-bracket-even-spacing": ["error", "either"],
+    "standard/computed-property-even-spacing": ["error", "even"]
+  },
+  "globals": {
+    "phaser": true
+  },
+  "settings": {
+    "import/core-modules": ["phaser", "pixi", "p2"]
+  }
+}
